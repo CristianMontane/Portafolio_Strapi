@@ -1,11 +1,23 @@
 import React from 'react';
-import { useHomeData } from '../lib/hooks';
+import { useHomeData, useProjects, useCategories } from '../lib/hooks';
 import { WithDataState } from '../components/DataStates';
 import { HomePageTemplate } from '../components/templates';
-import { projects, categories } from '../data/mockData';
 
 const HomePage: React.FC = () => {
-  const { homeData, loading, error, refetch } = useHomeData();
+  const { homeData, loading: homeLoading, error: homeError, refetch: refetchHome } = useHomeData();
+  const { projects, loading: projectsLoading, error: projectsError, refetch: refetchProjects } = useProjects();
+  const { categories, loading: categoriesLoading, error: categoriesError, refetch: refetchCategories } = useCategories();
+
+  // Combine loading states
+  const loading = homeLoading || projectsLoading || categoriesLoading;
+  
+  // Combine errors
+  const error = homeError || projectsError || categoriesError;
+  
+  // Combine refetch functions
+  const refetch = async () => {
+    await Promise.all([refetchHome(), refetchProjects(), refetchCategories()]);
+  };
 
   return (
     <WithDataState

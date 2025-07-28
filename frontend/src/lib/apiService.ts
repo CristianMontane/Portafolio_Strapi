@@ -25,15 +25,16 @@ interface StrapiResponse<T> {
 
 interface StrapiProject {
   id: number;
+  documentId: string;
   title: string;
-  description?: string;
-  cover_image?: { url: string; alternativeText?: string };
+  description?: StrapiParagraph[];
+  cover_image?: Array<{ id: number; url: string; alternativeText?: string }>;
   project_url?: string;
   repository_url?: string;
   published_date?: string;
   Desplegado?: boolean;
-  technologies?: Array<{ id: number; name: string }>;
-  categories?: Array<{ id: number; name: string }>;
+  technologies?: Array<{ id: number; documentId: string; name: string }>;
+  categories?: Array<{ id: number; documentId: string; name: string }>;
 }
 
 interface StrapiTechnology {
@@ -131,11 +132,11 @@ class StrapiApiService {
         'Projects?fields[1]=title&fields[2]=project_url&fields[3]=repository_url&fields[4]=published_date&fields[5]=Desplegado&fields[6]=description&populate[cover_image][fields][0]=url&populate[cover_image][fields][1]=alternativeText&populate[technologies][fields][0]=name&populate[categories][fields][0]=name'
       );
       
-      return response.data.map((project, index) => ({
-        id: index + 1,
+      return response.data.map((project) => ({
+        id: project.id,
         title: project.title,
-        description: project.description || '',
-        coverImages: project.cover_image ? [ImageProcessor.getImageUrl(project.cover_image)] : [],
+        description: project.description ? this.convertRichTextToPlainText(project.description) : '',
+        coverImages: project.cover_image?.map(img => ImageProcessor.getImageUrl(img)) || [],
         projectUrl: project.project_url || '',
         repositoryUrl: project.repository_url || '',
         technologies: project.technologies?.map((tech) => ({ 
@@ -169,10 +170,10 @@ class StrapiApiService {
       if (!project) return null;
       
       return {
-        id: parseInt(documentId),
+        id: project.id,
         title: project.title,
-        description: project.description || '',
-        coverImages: project.cover_image ? [ImageProcessor.getImageUrl(project.cover_image)] : [],
+        description: project.description ? this.convertRichTextToPlainText(project.description) : '',
+        coverImages: project.cover_image?.map(img => ImageProcessor.getImageUrl(img)) || [],
         projectUrl: project.project_url || '',
         repositoryUrl: project.repository_url || '',
         technologies: project.technologies?.map((tech) => ({ 
