@@ -1,5 +1,5 @@
 import React from 'react'
-import { CheckCircle, XCircle } from 'lucide-react'
+import { CheckCircle } from 'lucide-react'
 import { Badge, Icon } from '../atoms'
 
 interface StatusBadgeProps {

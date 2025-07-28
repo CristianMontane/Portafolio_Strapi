@@ -7,4 +7,5 @@ export { default as TechBadge } from './TechBadge';
 export { default as StatusBadge } from './StatusBadge';
 export { default as ProjectLinks } from './ProjectLinks';
 export { default as NavItem } from './NavItem';
+export { default as SmartNavItem } from './SmartNavItem';
 export { default as DateDisplay } from './DateDisplay';

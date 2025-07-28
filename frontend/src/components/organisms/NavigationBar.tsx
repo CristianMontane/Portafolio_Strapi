@@ -1,16 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Home, User, FolderOpen } from 'lucide-react';
+import { Home, FolderOpen } from 'lucide-react';
 import { Link } from '../atoms';
-import { NavItem } from '../molecules';
+import { NavItem, SmartNavItem } from '../molecules';
 
 const NavigationBar: React.FC = () => {
-  const navItems = [
-    { path: '/', label: 'Inicio', icon: Home },
-    { path: '/about', label: 'Sobre mí', icon: User },
-    { path: '/projects', label: 'Proyectos', icon: FolderOpen }
-  ];
-
   return (
     <motion.header
       initial={{ y: -100 }}
@@ -30,20 +24,26 @@ const NavigationBar: React.FC = () => {
             }}
           >
             <span className="text-red-500">&lt;</span>
-            Portafolio
+            😺
             <span className="text-red-500">/&gt;</span>
           </Link>
 
           {/* Navigation Items */}
           <div className="flex space-x-8">
-            {navItems.map((item) => (
-              <NavItem
-                key={item.path}
-                path={item.path}
-                label={item.label}
-                icon={item.icon}
-              />
-            ))}
+            {/* Botón de Inicio - navegación normal */}
+            <NavItem
+              path="/"
+              label="Inicio"
+              icon={Home}
+            />
+            
+            {/* Botón de Proyectos - navegación inteligente */}
+            <SmartNavItem
+              path="/projects"
+              label="Proyectos"
+              icon={FolderOpen}
+              scrollTargetId="projects-section"
+            />
           </div>
         </div>
       </nav>

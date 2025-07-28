@@ -8,11 +8,13 @@ import type { Project, Category } from '../../types';
 interface ProjectsSectionProps {
   projects: Project[];
   categories: Category[];
+  id?: string;
 }
 
 const ProjectsSection: React.FC<ProjectsSectionProps> = ({ 
   projects, 
-  categories 
+  categories,
+  id 
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
 
@@ -23,7 +25,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
     : projects;
 
   return (
-    <section className="py-20 px-6">
+    <section className="py-20 px-6" id={id}>
       <div className="container mx-auto max-w-7xl">
         {/* Section Header */}
         <Text
