@@ -169,3 +169,26 @@ npm run dev
 ```
 - ✅ React app en `http://localhost:5173`
 - ✅ Hot-reload automático
+
+---
+
+## 🌐 **DESPLIEGUE EN PRODUCCIÓN**
+
+![Production](https://img.shields.io/badge/Status-Production_Ready-success?style=flat-square&logo=vercel&logoColor=white)
+![Vercel](https://img.shields.io/badge/Frontend-Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
+![Strapi Cloud](https://img.shields.io/badge/Backend-Strapi_Cloud-2F2E8B?style=flat-square&logo=strapi&logoColor=white)
+
+### 🚀 **Ver Demo en Vivo**
+[![Demo](https://img.shields.io/badge/Demo-Live_Preview-brightgreen?style=for-the-badge&logo=vercel&logoColor=white)](https://portafolio-strapi.vercel.app)
+
+**🔗 URL de Producción**: [`https://portafolio-strapi.vercel.app`](https://portafolio-strapi.vercel.app)
+
+### 🏗️ **Arquitectura de Despliegue**
+
+![Architecture](https://img.shields.io/badge/Architecture-JAMstack-purple?style=flat-square&logo=jamstack&logoColor=white)
+
+- **Frontend**: Desplegado en **Vercel** con integración CI/CD automática
+- **Backend**: Desplegado en **Strapi Cloud** para gestión de contenido
+- **Base de Datos**: PostgreSQL en Strapi Cloud
+- **CDN**: Vercel Edge Network para carga rápida global
+- **SSL**: Certificados automáticos en ambas plataformas
