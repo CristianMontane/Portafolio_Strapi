@@ -10,7 +10,7 @@ interface ProjectDetailTemplateProps {
 
 const ProjectDetailTemplate: React.FC<ProjectDetailTemplateProps> = ({ project }) => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black pt-32">
+    <div className="bg-gradient-to-br from-black via-gray-900 to-black pt-32 pb-16">
       <div className="container mx-auto max-w-6xl px-6">
         {/* Back Button */}
         <div className="mb-8">

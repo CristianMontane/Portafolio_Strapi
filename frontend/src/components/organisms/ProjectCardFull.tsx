@@ -26,7 +26,11 @@ const ProjectCardFull: React.FC<ProjectCardFullProps> = ({ project, index = 0 })
         initial: { opacity: 0, y: 50 },
         animate: { opacity: 1, y: 0 },
         transition: { duration: 0.5, delay: index * 0.1 },
-        whileHover: { y: -8, scale: 1.02 }
+        whileHover: { 
+          y: -8, 
+          scale: 1.02,
+          transition: { duration: 0.1 }
+        }
       }}
     >
       {/* Project Image */}
