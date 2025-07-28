@@ -89,7 +89,7 @@ git clone git@github.com:CristianMontane/Portafolio_Strapi.git
 cd Portafolio_Strapi
 
 # Instalar dependencias del backend
-cd backend
+cd ../backend
 npm install
 
 # Instalar dependencias del frontend  
@@ -117,6 +117,10 @@ PORT=4000
 #### 🎨 **Frontend (.env.local)**
 ```bash
 cd ../frontend
+# Para Unix/Linux/MacOS
+echo -e "VITE_STRAPI_HOST=http://localhost:4000\nVITE_STRAPI_TOKEN=tu_api_token_aqui" > .env.local
+
+# Para Windows PowerShell
 "VITE_STRAPI_HOST=http://localhost:4000`nVITE_STRAPI_TOKEN=tu_api_token_aqui" | Out-File -Encoding utf8 .env.local
 
 ```
@@ -153,8 +157,8 @@ npm run develop
 3. **Generar API Token**:
    - Settings → API Tokens → Create new API Token
    - **Name**: `Frontend Token`
-   - **Token type**: `Read-Only` o `Full Access`
    - **Token duration**: `Unlimited`
+   - **Token type**: `Read-Only`
    - ✅ **Copiar el token generado**
 
 4. **Actualizar frontend .env.local**:
@@ -164,7 +168,7 @@ npm run develop
 
 #### 🔹 **Paso 3: Iniciar Frontend**
 ```bash
-cd frontend
+cd ../frontend
 npm run dev
 ```
 - ✅ React app en `http://localhost:5173`
