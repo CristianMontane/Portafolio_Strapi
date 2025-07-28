@@ -493,7 +493,6 @@ export interface ApiTechnologieTechnologie extends Struct.CollectionTypeSchema {
       'api::technologie.technologie'
     > &
       Schema.Attribute.Private;
-    logo: Schema.Attribute.Media<'images' | 'files'>;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     projects: Schema.Attribute.Relation<'manyToMany', 'api::project.project'>;
     publishedAt: Schema.Attribute.DateTime;
