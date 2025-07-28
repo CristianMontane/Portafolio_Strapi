@@ -16,17 +16,14 @@
       "required": true
     },
     "description": {
-      "type": "richtext",
-      "required": true
+      "type": "blocks"
     },
     "cover_image": {
       "type": "media",
       "multiple": true,
       "allowedTypes": [
         "images",
-        "files",
-        "videos",
-        "audios"
+        "files"
       ]
     },
     "project_url": {
@@ -41,6 +38,18 @@
     "Desplegado": {
       "type": "boolean",
       "default": false
+    },
+    "technologies": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::technologie.technologie",
+      "mappedBy": "projects"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::categorie.categorie",
+      "mappedBy": "project"
     }
   }
 }
