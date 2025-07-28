@@ -38,7 +38,7 @@ const Link: React.FC<LinkProps> = ({
 
   if (motionProps) {
     if (to) {
-      const MotionRouterLink = motion(RouterLink);
+      const MotionRouterLink = motion.create(RouterLink);
       return (
         <MotionRouterLink
           to={to}

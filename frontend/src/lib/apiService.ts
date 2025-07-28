@@ -129,11 +129,12 @@ class StrapiApiService {
   async getProjects(): Promise<Project[]> {
     try {
       const response = await httpClient.get<StrapiResponse<StrapiProject[]>>(
-        'Projects?fields[1]=title&fields[2]=project_url&fields[3]=repository_url&fields[4]=published_date&fields[5]=Desplegado&fields[6]=description&populate[cover_image][fields][0]=url&populate[cover_image][fields][1]=alternativeText&populate[technologies][fields][0]=name&populate[categories][fields][0]=name'
+        'Projects?fields[0]=documentId&fields[1]=title&fields[2]=project_url&fields[3]=repository_url&fields[4]=published_date&fields[5]=Desplegado&fields[6]=description&populate[cover_image][fields][0]=url&populate[cover_image][fields][1]=alternativeText&populate[technologies][fields][0]=name&populate[categories][fields][0]=name'
       );
       
       return response.data.map((project) => ({
         id: project.id,
+        documentId: project.documentId,
         title: project.title,
         description: project.description ? this.convertRichTextToPlainText(project.description) : '',
         coverImages: project.cover_image?.map(img => ImageProcessor.getImageUrl(img)) || [],
@@ -171,6 +172,7 @@ class StrapiApiService {
       
       return {
         id: project.id,
+        documentId: project.documentId,
         title: project.title,
         description: project.description ? this.convertRichTextToPlainText(project.description) : '',
         coverImages: project.cover_image?.map(img => ImageProcessor.getImageUrl(img)) || [],

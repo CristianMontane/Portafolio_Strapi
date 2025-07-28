@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Text, Image, Card, Button, Badge } from '../atoms';
 import { TechBadge, StatusBadge, ProjectLinks, DateDisplay } from '../molecules';
 import type { Project } from '../../types';
@@ -9,6 +10,15 @@ interface ProjectCardFullProps {
 }
 
 const ProjectCardFull: React.FC<ProjectCardFullProps> = ({ project, index = 0 }) => {
+  const navigate = useNavigate();
+  
+  // Debug log - podemos quitarlo después
+  console.log('ProjectCardFull - project data:', { 
+    id: project.id, 
+    documentId: project.documentId, 
+    title: project.title 
+  });
+  
   return (
     <Card
       variant="elevated"
@@ -76,8 +86,9 @@ const ProjectCardFull: React.FC<ProjectCardFullProps> = ({ project, index = 0 })
               whileTap: { scale: 0.95 }
             }}
             onClick={() => {
-              // Navigate to project detail
-              window.location.href = `/project/${project.id}`;
+              // Navigate to project detail using documentId
+              const projectId = project.documentId || project.id.toString();
+              navigate(`/project/${projectId}`);
             }}
           >
             Ver detalles

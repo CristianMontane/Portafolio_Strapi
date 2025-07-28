@@ -2,17 +2,18 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { WithDataState } from '../components/DataStates';
 import { ProjectDetailTemplate } from '../components/templates';
-import { projects } from '../data/mockData';
+import { useProjectById } from '../lib/hooks';
 
 const ProjectDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const project = projects.find(p => p.id === parseInt(id || '0')) || null;
+  const { project, loading, error, refetch } = useProjectById(id || '');
 
   return (
     <WithDataState
       data={project}
-      loading={false}
-      error={null}
+      loading={loading}
+      error={error}
+      onRetry={refetch}
       emptyMessage="Proyecto no encontrado"
     >
       {(projectData) => <ProjectDetailTemplate project={projectData} />}

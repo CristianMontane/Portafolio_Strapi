@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getHomeData, getProjects, getCategories } from './apiService';
+import { getHomeData, getProjects, getCategories, getProjectById } from './apiService';
 import type { HomeData, Project, Category } from '../types';
 
 interface UseHomeDataReturn {
@@ -18,6 +18,13 @@ interface UseProjectsReturn {
 
 interface UseCategoriesReturn {
   categories: Category[];
+  loading: boolean;
+  error: string | null;
+  refetch: () => Promise<void>;
+}
+
+interface UseProjectByIdReturn {
+  project: Project | null;
   loading: boolean;
   error: string | null;
   refetch: () => Promise<void>;
@@ -113,5 +120,64 @@ export function useCategories(): UseCategoriesReturn {
     loading,
     error,
     refetch: fetchCategories
+  };
+}
+
+export function useProjectById(documentId: string): UseProjectByIdReturn {
+  const [project, setProject] = useState<Project | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchProject = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        
+        // Debug log - podemos quitarlo después
+        console.log('useProjectById - attempting to fetch with documentId:', documentId);
+        
+        // Validar que documentId no sea un número simple (debe ser un documentId de Strapi)
+        if (!documentId || /^\d+$/.test(documentId)) {
+          throw new Error('DocumentId inválido. Debe usar el documentId de Strapi, no el ID numérico.');
+        }
+        
+        const data = await getProjectById(documentId);
+        setProject(data);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Error al cargar el proyecto');
+        console.error('Error fetching project:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (documentId) {
+      fetchProject();
+    }
+  }, [documentId]);
+
+  const refetch = async () => {
+    if (documentId) {
+      setLoading(true);
+      setError(null);
+      
+      try {
+        const data = await getProjectById(documentId);
+        setProject(data);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Error al cargar el proyecto');
+        console.error('Error fetching project:', err);
+      } finally {
+        setLoading(false);
+      }
+    }
+  };
+
+  return {
+    project,
+    loading,
+    error,
+    refetch
   };
 }

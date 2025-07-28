@@ -11,6 +11,7 @@ export interface Category {
 
 export interface Project {
   id: number;
+  documentId?: string;
   title: string;
   description: string;
   coverImages: string[];
