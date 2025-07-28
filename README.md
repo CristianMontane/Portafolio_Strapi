@@ -116,16 +116,11 @@ PORT=4000
 
 #### 🎨 **Frontend (.env.local)**
 ```bash
-cd frontend
-touch .env.local
+cd ../frontend
+"VITE_STRAPI_HOST=http://localhost:4000`nVITE_STRAPI_TOKEN=tu_api_token_aqui" | Out-File -Encoding utf8 .env.local
+
 ```
 
-Contenido de `.env.local`:
-```bash
-# Strapi Configuration
-VITE_STRAPI_HOST=http://localhost:4000
-VITE_STRAPI_TOKEN=tu_api_token_aqui
-```
 
 ### 🏃 **3. Ejecución en Desarrollo**
 
@@ -134,7 +129,7 @@ VITE_STRAPI_TOKEN=tu_api_token_aqui
 
 #### 🔹 **Paso 1: Iniciar Backend**
 ```bash
-cd backend
+cd ../backend
 npm run develop
 ```
 - ✅ Strapi se ejecuta en `http://localhost:4000`
