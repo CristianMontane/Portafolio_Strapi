@@ -1,7 +1,8 @@
 import React from 'react';
 import { useHomeData } from '../lib/hooks';
 import { WithDataState } from '../components/DataStates';
-import HomePageContent from '../components/HomePageContent';
+import { HomePageTemplate } from '../components/templates';
+import { projects, categories } from '../data/mockData';
 
 const HomePage: React.FC = () => {
   const { homeData, loading, error, refetch } = useHomeData();
@@ -15,7 +16,13 @@ const HomePage: React.FC = () => {
       loadingMessage="Cargando información del portafolio..."
       emptyMessage="No se encontró información del portafolio"
     >
-      {(data) => <HomePageContent homeData={data} />}
+      {(data) => (
+        <HomePageTemplate 
+          homeData={data} 
+          projects={projects} 
+          categories={categories} 
+        />
+      )}
     </WithDataState>
   );
 };

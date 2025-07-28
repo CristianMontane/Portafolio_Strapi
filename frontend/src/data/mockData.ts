@@ -1,10 +1,4 @@
-import { Project, HomeData, SocialLink, Technology, Category } from '../types';
-
-export const homeData: HomeData = {
-  title: "Alex Rodriguez",
-  description: "Desarrollador Full Stack apasionado por crear experiencias digitales excepcionales. Especializado en React, Node.js y tecnologías modernas.",
-  photo: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400"
-};
+import type { Project, HomeData, SocialLink, Technology, Category } from '../types';
 
 export const socialLinks: SocialLink[] = [
   {
@@ -23,6 +17,13 @@ export const socialLinks: SocialLink[] = [
     icon: "mail"
   }
 ];
+
+export const homeData: HomeData = {
+  title: "Alex Rodriguez",
+  description: "Desarrollador Full Stack apasionado por crear experiencias digitales excepcionales. Especializado en React, Node.js y tecnologías modernas.",
+  photo: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400",
+  socialLinks
+};
 
 export const technologies: Technology[] = [
   { id: 1, name: "React", logo: "" },

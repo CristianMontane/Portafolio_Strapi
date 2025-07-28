@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Home, User, FolderOpen } from 'lucide-react';
+import { Link } from '../atoms';
+import { NavItem } from '../molecules';
 
-const Header: React.FC = () => {
-  const location = useLocation();
-
+const NavigationBar: React.FC = () => {
   const navItems = [
     { path: '/', label: 'Inicio', icon: Home },
     { path: '/about', label: 'Sobre mí', icon: User },
@@ -20,26 +19,30 @@ const Header: React.FC = () => {
     >
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="text-2xl font-bold text-white hover:text-red-500 transition-colors">
+          {/* Logo */}
+          <Link
+            to="/"
+            variant="ghost"
+            className="text-2xl font-bold"
+            motionProps={{
+              whileHover: { scale: 1.05 },
+              whileTap: { scale: 0.95 }
+            }}
+          >
             <span className="text-red-500">&lt;</span>
             Portfolio
             <span className="text-red-500">/&gt;</span>
           </Link>
 
+          {/* Navigation Items */}
           <div className="flex space-x-8">
-            {navItems.map(({ path, label, icon: Icon }) => (
-              <Link
-                key={path}
-                to={path}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${
-                  location.pathname === path
-                    ? 'bg-red-600 text-white'
-                    : 'text-gray-300 hover:text-white hover:bg-red-600/20'
-                }`}
-              >
-                <Icon size={18} />
-                <span>{label}</span>
-              </Link>
+            {navItems.map((item) => (
+              <NavItem
+                key={item.path}
+                path={item.path}
+                label={item.label}
+                icon={item.icon}
+              />
             ))}
           </div>
         </div>
@@ -48,4 +51,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+export default NavigationBar;

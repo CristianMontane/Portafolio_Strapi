@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getHomeData } from '../lib/api';
+import { getHomeData } from './apiService';
 import type { HomeData } from '../types';
 
 interface UseHomeDataReturn {
