@@ -1,2 +1,27 @@
-GET http://localhost:4000/api/home?populate=photo
+# GET Name, description, and photo URL
+GET http://localhost:4000/api/home?fields[0]=title&fields[1]=description&populate[photo][fields][0]=url&fields[2]=networks
+Authorization: Bearer b1fd543be1e99d1773c0d9a123e23c1a2769a70ce2f391bde1e591f07686b0de508623f77ee1063a1c7ef17f06bc6be1dd53ec4bc9f6571d5ca0a875a545caace2b98cfea0b0d4abc255f32818cb363193cfe796d48c84087c1da326fd174292aeccfcf225aa02e63ff10a434110439b6476ac9f3b3d7efdc91af1f943e0f818
+
+###
+
+# Get all projects with selective fields
+GET http://localhost:4000/api/Projects?fields[1]=title&fields[2]=project_url&fields[3]=repository_url&fields[4]=published_date&fields[5]=Desplegado&fields[6]=description&populate[cover_image][fields][0]=url&populate[cover_image][fields][1]=alternativeText&populate[technologies][fields][0]=name&populate[categories][fields][0]=name
+Authorization: Bearer b1fd543be1e99d1773c0d9a123e23c1a2769a70ce2f391bde1e591f07686b0de508623f77ee1063a1c7ef17f06bc6be1dd53ec4bc9f6571d5ca0a875a545caace2b98cfea0b0d4abc255f32818cb363193cfe796d48c84087c1da326fd174292aeccfcf225aa02e63ff10a434110439b6476ac9f3b3d7efdc91af1f943e0f818
+
+###
+
+# Get single project by documentId
+GET http://localhost:4000/api/Projects/nql0dct2gjcwnh78ix2ne8qo?fields[0]=documentId&fields[1]=title&fields[2]=project_url&fields[3]=repository_url&fields[4]=published_date&fields[5]=Desplegado&fields[6]=description&populate[cover_image][fields][0]=url&populate[cover_image][fields][1]=alternativeText&populate[cover_image][fields][2]=formats&populate[technologies][fields][0]=name&populate[categories][fields][0]=name
+Authorization: Bearer b1fd543be1e99d1773c0d9a123e23c1a2769a70ce2f391bde1e591f07686b0de508623f77ee1063a1c7ef17f06bc6be1dd53ec4bc9f6571d5ca0a875a545caace2b98cfea0b0d4abc255f32818cb363193cfe796d48c84087c1da326fd174292aeccfcf225aa02e63ff10a434110439b6476ac9f3b3d7efdc91af1f943e0f818
+
+###
+
+# Get technologies
+GET http://localhost:4000/api/technologies?fields[0]=name&fields[1]=logo
+Authorization: Bearer b1fd543be1e99d1773c0d9a123e23c1a2769a70ce2f391bde1e591f07686b0de508623f77ee1063a1c7ef17f06bc6be1dd53ec4bc9f6571d5ca0a875a545caace2b98cfea0b0d4abc255f32818cb363193cfe796d48c84087c1da326fd174292aeccfcf225aa02e63ff10a434110439b6476ac9f3b3d7efdc91af1f943e0f818
+
+###
+
+# Get categories
+GET http://localhost:4000/api/categories?fields[0]=name
 Authorization: Bearer b1fd543be1e99d1773c0d9a123e23c1a2769a70ce2f391bde1e591f07686b0de508623f77ee1063a1c7ef17f06bc6be1dd53ec4bc9f6571d5ca0a875a545caace2b98cfea0b0d4abc255f32818cb363193cfe796d48c84087c1da326fd174292aeccfcf225aa02e63ff10a434110439b6476ac9f3b3d7efdc91af1f943e0f818
