@@ -1,5 +1,6 @@
 // Molecules Barrel Export
 export { default as SocialLinkButton } from './SocialLinkButton';
+export { default as ContactModal } from './ContactModal';
 export { default as CategoryFilterButton } from './CategoryFilterButton';
 export { default as LoadingSpinner } from './LoadingSpinner';
 export { default as ErrorMessage } from './ErrorMessage';
