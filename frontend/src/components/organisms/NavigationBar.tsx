@@ -30,7 +30,7 @@ const NavigationBar: React.FC = () => {
             }}
           >
             <span className="text-red-500">&lt;</span>
-            Portfolio
+            Portafolio
             <span className="text-red-500">/&gt;</span>
           </Link>
 

@@ -47,9 +47,9 @@
     },
     "categories": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::categorie.categorie",
-      "mappedBy": "project"
+      "mappedBy": "projects"
     }
   }
 }
