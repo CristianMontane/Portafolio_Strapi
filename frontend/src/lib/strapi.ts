@@ -35,7 +35,7 @@ export function query(url: string) {
     }
   }
 
-  function getImageUrl(imageData: any): string {
+  function getImageUrl(imageData: { url?: string; formats?: { [key: string]: { url?: string } } }): string {
     if (!imageData || !imageData.url) {
       return ''
     }
